@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+
+
+
+        <record id="action_hr_bono_14" model="ir.actions.act_window">
+            <field name="name">Calculo Bono 14/Aguinaldo</field>
+            <field name="res_model">hr.bono.14</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_hr_bono_14_tree"/>
+        </record>
+
+        <menuitem action="action_hr_bono_14" name="Bono 14/Aguinaldo" id="menu_employment_benefits" parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root" sequence="76"/>
+    </data>
+</odoo>

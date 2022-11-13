@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <record id="view_hr_bono_14_form" model="ir.ui.view">
+            <field name="name">hr.bono.14.form</field>
+            <field name="model">hr.bono.14</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <button class="btn btn-sm btn-primary"
+                                name="action_set_lineas_ids" string="Obtener salarios del periodo" type="object"/>
+                        <button class="btn btn-sm btn-info float-right pull-right"
+                                name="action_set_new_payslip_entry" string="Enviar bono a nomina" type="object"
+                                attrs="{'invisible': [('nomina_salida', '=', False)]}"/>
+                        <group>
+                            <field name="contract_id"/>
+                            <field name="calculate_hr" widget="radio"/>
+                            <field name="company_id"/>
+                            <field name="salario_dia" attrs="{'invisible': [('calculate_hr', '=', 'aguinaldo')]}"/>
+                            <field name="inicio"/>
+                            <field name="fin"/>
+                            <field name="type_contract" widget="radio"/>
+                            <field name="final_amount"/>
+                            <field name="salary_not_deduction" attrs="{'invisible': [('calculate_hr', '=', 'aguinaldo')]}"/>
+                            <field name="deduction_bono" attrs="{'invisible': [('calculate_hr', '=', 'aguinaldo')]}"/>
+                            <field name="salary_mean_year_incomplete" attrs="{'invisible':[ ('type_contract', '=', 'complet')]}"/>
+                            <field name="total_salario_por_dia" attrs="{'invisible': [('calculate_hr', '=', 'aguinaldo')]}"/>
+                            <field name="nomina_salida"/>
+                            <field name="month_division_mean_year_incomplete" readonly="0" attrs="{'invisible': [('type_contract','=','complet')]}"/>
+                            <field name="division_de_periodods" attrs="{'invisible': [('calculate_hr', '=', 'aguinaldo')]}"/>
+                            <field name="total_dias" hidden="True"/>
+                        </group>
+                        <group>
+                            <field name="lineas_ids">
+                                <tree>
+                                    <field name="payslip_id"/>
+                                    <field name="total_dias" sum="Total dias"/>
+                                    <field name="total_amount" sum="Total"/>
+                                    <field name="total_deduction" sum="Total"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hr_bono_14_tree" model="ir.ui.view">
+            <field name="name">hr.bono.14.tree</field>
+            <field name="model">hr.bono.14</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="contract_id"/>
+                    <field name="inicio"/>
+                    <field name="fin"/>
+                    <field name="final_amount"/>
+                    <field name="nomina_salida"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>
